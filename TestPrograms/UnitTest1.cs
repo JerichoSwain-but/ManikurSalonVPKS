@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
-using ManikurLib;
+using ManikurLib1;
 
 namespace TestPrograms
 {
@@ -9,14 +9,14 @@ namespace TestPrograms
     public class DataBaseTest
     {
         [TestMethod]
-        public void AddDataToZapisTable()
+        public void AddDataToZapisTableMethod()
         {
             DataBaseN database = new DataBaseN();
 
             bool expected = true;
 
             bool actual = database.AddDataToZapisTable(
-                2,
+                3,
                 2,
                 5,
                 "20:00",
@@ -30,7 +30,7 @@ namespace TestPrograms
         }
 
         [TestMethod]
-        public void DeleteDataFromYslygaTable()
+        public void DeleteDataFromYslygaTableMethod()
         {
             DataBaseN database = new DataBaseN();
 
@@ -44,7 +44,7 @@ namespace TestPrograms
         }
 
         [TestMethod]
-        public void EditNameInMasterTable()
+        public void EditNameInMasterTableMethod()
         {
             DataBaseN database = new DataBaseN();
 
@@ -61,7 +61,7 @@ namespace TestPrograms
         }
 
         [TestMethod]
-        public void GetUserZ_ID()
+        public void GetUserZ_ID_Method()
         {
             DataBaseN database = new DataBaseN();
             int user_id = 1;
@@ -74,14 +74,14 @@ namespace TestPrograms
         }
 
         [TestMethod]
-        public void GetYslygaByID()
+        public void GetYslygaByID_Method()
         {
             DataBaseN database = new DataBaseN();
             int user_id = 3;
 
             var expected = ManikurSalon.ManikurSalonEntities.GetContext().Yslyga.Where(p => p.ID_Yslyga == user_id).FirstOrDefault();
 
-            var actual = database.GetUserZ_ID(user_id);
+            var actual = database.GetYslygaByID(user_id);
 
             Assert.AreEqual(expected, actual);
         }

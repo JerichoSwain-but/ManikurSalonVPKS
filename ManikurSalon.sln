@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManikurSalon", "ManikurSalo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPrograms", "TestPrograms\TestPrograms.csproj", "{65D83DBE-18DF-4AFA-A6D3-7F37EC067DCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManikurLib", "ManikurLib\ManikurLib.csproj", "{EAE908FC-0A6B-459B-8FCA-7EF2480FF307}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManikurLib1", "ManikurLib1\ManikurLib1.csproj", "{F9D85FD7-DED9-47F3-8160-410A537BC55A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{65D83DBE-18DF-4AFA-A6D3-7F37EC067DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D83DBE-18DF-4AFA-A6D3-7F37EC067DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D83DBE-18DF-4AFA-A6D3-7F37EC067DCB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EAE908FC-0A6B-459B-8FCA-7EF2480FF307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EAE908FC-0A6B-459B-8FCA-7EF2480FF307}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EAE908FC-0A6B-459B-8FCA-7EF2480FF307}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EAE908FC-0A6B-459B-8FCA-7EF2480FF307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9D85FD7-DED9-47F3-8160-410A537BC55A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D85FD7-DED9-47F3-8160-410A537BC55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D85FD7-DED9-47F3-8160-410A537BC55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D85FD7-DED9-47F3-8160-410A537BC55A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

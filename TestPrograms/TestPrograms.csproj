@@ -64,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ManikurLib\ManikurLib.csproj">
-      <Project>{eae908fc-0a6b-459b-8fca-7ef2480ff307}</Project>
-      <Name>ManikurLib</Name>
+    <ProjectReference Include="..\ManikurLib1\ManikurLib1.csproj">
+      <Project>{f9d85fd7-ded9-47f3-8160-410a537bc55a}</Project>
+      <Name>ManikurLib1</Name>
     </ProjectReference>
     <ProjectReference Include="..\ManikurSalon\ManikurSalon.csproj">
       <Project>{10b50f34-cab1-4e77-8550-c50580908c1b}</Project>
