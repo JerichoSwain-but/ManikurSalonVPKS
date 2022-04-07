@@ -1,0 +1,35 @@
+﻿<Page x:Class="ManikurSalon.ForAdministratorPages.AddYslyga"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ManikurSalon.ForAdministratorPages"
+      mc:Ignorable="d" 
+      Height="581.919" Width="975.069"
+      Title="AddYslyga">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="84*"/>
+            <RowDefinition Height="102*"/>
+            <RowDefinition Height="76*"/>
+            <RowDefinition Height="119*"/>
+        </Grid.RowDefinitions>
+        <Image Margin="68,0,67,16" Source="/ManikurSalon;component/543321.png" Stretch="Fill" Grid.RowSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="148,6,0,0" TextWrapping="Wrap" Text="Категория" VerticalAlignment="Top" Height="41" Width="165" FontSize="24" Grid.Row="3"/>
+        <TextBlock HorizontalAlignment="Left" Margin="148,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="41" Width="165" FontSize="24" Grid.Row="4"><Run Text="Название"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="148,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="41" Width="165" FontSize="24" Grid.Row="5"><Run Text="Цена"/><LineBreak/><Run/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Height="41" Margin="341,20,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="227" Grid.Row="4"/>
+        <TextBox HorizontalAlignment="Left" Height="41" Margin="341,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="227" Grid.Row="5"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="410,42,0,0" VerticalAlignment="Top" Width="75" Grid.Row="6"/>
+        <Button Content="Просмотр" HorizontalAlignment="Left" Margin="388,21,0,0" VerticalAlignment="Top" Width="76" Grid.Row="1"/>
+        <Button Content="Редактор" HorizontalAlignment="Left" Margin="289,21,0,0" VerticalAlignment="Top" Width="76" Grid.Row="1"/>
+        <Button Content="Добавление" HorizontalAlignment="Left" Margin="196,21,0,0" VerticalAlignment="Top" Width="76" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" Height="41" Margin="341,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="227" Grid.Row="3"/>
+
+    </Grid>
+</Page>

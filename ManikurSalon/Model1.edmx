@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ManikurSalonModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorya">
+          <Key>
+            <PropertyRef Name="ID_Categorya" />
+          </Key>
+          <Property Name="ID_Categorya" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Categorya" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Masters">
+          <Key>
+            <PropertyRef Name="ID_Masters" />
+          </Key>
+          <Property Name="ID_Masters" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameMaster" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondNameMaster" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OtchestvoMaster" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stud">
+          <Key>
+            <PropertyRef Name="ID_stud" />
+          </Key>
+          <Property Name="ID_stud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Yslyga">
+          <Key>
+            <PropertyRef Name="ID_Yslyga" />
+          </Key>
+          <Property Name="ID_Yslyga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Categorya" Type="int" Nullable="false" />
+          <Property Name="NazvanieYslygi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zapis">
+          <Key>
+            <PropertyRef Name="ID_Zapis" />
+          </Key>
+          <Property Name="ID_Zapis" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_stud" Type="int" Nullable="false" />
+          <Property Name="ID_Yslyga" Type="int" Nullable="false" />
+          <Property Name="Time" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_Master" Type="int" Nullable="false" />
+          <Property Name="Name_Zakasik" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName_Zakasik" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Otchestvo_Zakasik" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Yslyga_Categorya">
+          <End Role="Categorya" Type="Self.Categorya" Multiplicity="1" />
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorya">
+              <PropertyRef Name="ID_Categorya" />
+            </Principal>
+            <Dependent Role="Yslyga">
+              <PropertyRef Name="ID_Categorya" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapis_Masters">
+          <End Role="Masters" Type="Self.Masters" Multiplicity="1" />
+          <End Role="Zapis" Type="Self.Zapis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Masters">
+              <PropertyRef Name="ID_Masters" />
+            </Principal>
+            <Dependent Role="Zapis">
+              <PropertyRef Name="ID_Master" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapis_Stud">
+          <End Role="Stud" Type="Self.Stud" Multiplicity="1" />
+          <End Role="Zapis" Type="Self.Zapis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stud">
+              <PropertyRef Name="ID_stud" />
+            </Principal>
+            <Dependent Role="Zapis">
+              <PropertyRef Name="ID_stud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapis_Yslyga">
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="1" />
+          <End Role="Zapis" Type="Self.Zapis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yslyga">
+              <PropertyRef Name="ID_Yslyga" />
+            </Principal>
+            <Dependent Role="Zapis">
+              <PropertyRef Name="ID_Yslyga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ManikurSalonModelContainer">
+          <EntitySet Name="Categorya" EntityType="Self.Categorya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Masters" EntityType="Self.Masters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stud" EntityType="Self.Stud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yslyga" EntityType="Self.Yslyga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zapis" EntityType="Self.Zapis" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Yslyga_Categorya" Association="Self.FK_Yslyga_Categorya">
+            <End Role="Categorya" EntitySet="Categorya" />
+            <End Role="Yslyga" EntitySet="Yslyga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapis_Masters" Association="Self.FK_Zapis_Masters">
+            <End Role="Masters" EntitySet="Masters" />
+            <End Role="Zapis" EntitySet="Zapis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapis_Stud" Association="Self.FK_Zapis_Stud">
+            <End Role="Stud" EntitySet="Stud" />
+            <End Role="Zapis" EntitySet="Zapis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapis_Yslyga" Association="Self.FK_Zapis_Yslyga">
+            <End Role="Yslyga" EntitySet="Yslyga" />
+            <End Role="Zapis" EntitySet="Zapis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ManikurSalonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorya">
+          <Key>
+            <PropertyRef Name="ID_Categorya" />
+          </Key>
+          <Property Name="ID_Categorya" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Categorya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Yslyga" Relationship="Self.FK_Yslyga_Categorya" FromRole="Categorya" ToRole="Yslyga" />
+        </EntityType>
+        <EntityType Name="Masters">
+          <Key>
+            <PropertyRef Name="ID_Masters" />
+          </Key>
+          <Property Name="ID_Masters" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameMaster" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondNameMaster" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OtchestvoMaster" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zapis" Relationship="Self.FK_Zapis_Masters" FromRole="Masters" ToRole="Zapis" />
+        </EntityType>
+        <EntityType Name="Stud">
+          <Key>
+            <PropertyRef Name="ID_stud" />
+          </Key>
+          <Property Name="ID_stud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zapis" Relationship="Self.FK_Zapis_Stud" FromRole="Stud" ToRole="Zapis" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Yslyga">
+          <Key>
+            <PropertyRef Name="ID_Yslyga" />
+          </Key>
+          <Property Name="ID_Yslyga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Categorya" Type="Int32" Nullable="false" />
+          <Property Name="NazvanieYslygi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorya" Relationship="Self.FK_Yslyga_Categorya" FromRole="Yslyga" ToRole="Categorya" />
+          <NavigationProperty Name="Zapis" Relationship="Self.FK_Zapis_Yslyga" FromRole="Yslyga" ToRole="Zapis" />
+        </EntityType>
+        <EntityType Name="Zapis">
+          <Key>
+            <PropertyRef Name="ID_Zapis" />
+          </Key>
+          <Property Name="ID_Zapis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_stud" Type="Int32" Nullable="false" />
+          <Property Name="ID_Yslyga" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ID_Master" Type="Int32" Nullable="false" />
+          <Property Name="Name_Zakasik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName_Zakasik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otchestvo_Zakasik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Masters" Relationship="Self.FK_Zapis_Masters" FromRole="Zapis" ToRole="Masters" />
+          <NavigationProperty Name="Stud" Relationship="Self.FK_Zapis_Stud" FromRole="Zapis" ToRole="Stud" />
+          <NavigationProperty Name="Yslyga" Relationship="Self.FK_Zapis_Yslyga" FromRole="Zapis" ToRole="Yslyga" />
+        </EntityType>
+        <Association Name="FK_Yslyga_Categorya">
+          <End Role="Categorya" Type="Self.Categorya" Multiplicity="1" />
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorya">
+              <PropertyRef Name="ID_Categorya" />
+            </Principal>
+            <Dependent Role="Yslyga">
+              <PropertyRef Name="ID_Categorya" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapis_Masters">
+          <End Role="Masters" Type="Self.Masters" Multiplicity="1" />
+          <End Role="Zapis" Type="Self.Zapis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Masters">
+              <PropertyRef Name="ID_Masters" />
+            </Principal>
+            <Dependent Role="Zapis">
+              <PropertyRef Name="ID_Master" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapis_Stud">
+          <End Role="Stud" Type="Self.Stud" Multiplicity="1" />
+          <End Role="Zapis" Type="Self.Zapis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stud">
+              <PropertyRef Name="ID_stud" />
+            </Principal>
+            <Dependent Role="Zapis">
+              <PropertyRef Name="ID_stud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapis_Yslyga">
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="1" />
+          <End Role="Zapis" Type="Self.Zapis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yslyga">
+              <PropertyRef Name="ID_Yslyga" />
+            </Principal>
+            <Dependent Role="Zapis">
+              <PropertyRef Name="ID_Yslyga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ManikurSalonEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorya" EntityType="Self.Categorya" />
+          <EntitySet Name="Masters" EntityType="Self.Masters" />
+          <EntitySet Name="Stud" EntityType="Self.Stud" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Yslyga" EntityType="Self.Yslyga" />
+          <EntitySet Name="Zapis" EntityType="Self.Zapis" />
+          <AssociationSet Name="FK_Yslyga_Categorya" Association="Self.FK_Yslyga_Categorya">
+            <End Role="Categorya" EntitySet="Categorya" />
+            <End Role="Yslyga" EntitySet="Yslyga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapis_Masters" Association="Self.FK_Zapis_Masters">
+            <End Role="Masters" EntitySet="Masters" />
+            <End Role="Zapis" EntitySet="Zapis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapis_Stud" Association="Self.FK_Zapis_Stud">
+            <End Role="Stud" EntitySet="Stud" />
+            <End Role="Zapis" EntitySet="Zapis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapis_Yslyga" Association="Self.FK_Zapis_Yslyga">
+            <End Role="Yslyga" EntitySet="Yslyga" />
+            <End Role="Zapis" EntitySet="Zapis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ManikurSalonModelContainer" CdmEntityContainer="ManikurSalonEntities1">
+          <EntitySetMapping Name="Categorya">
+            <EntityTypeMapping TypeName="ManikurSalonModel.Categorya">
+              <MappingFragment StoreEntitySet="Categorya">
+                <ScalarProperty Name="ID_Categorya" ColumnName="ID_Categorya" />
+                <ScalarProperty Name="Name_Categorya" ColumnName="Name_Categorya" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masters">
+            <EntityTypeMapping TypeName="ManikurSalonModel.Masters">
+              <MappingFragment StoreEntitySet="Masters">
+                <ScalarProperty Name="ID_Masters" ColumnName="ID_Masters" />
+                <ScalarProperty Name="NameMaster" ColumnName="NameMaster" />
+                <ScalarProperty Name="SecondNameMaster" ColumnName="SecondNameMaster" />
+                <ScalarProperty Name="OtchestvoMaster" ColumnName="OtchestvoMaster" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stud">
+            <EntityTypeMapping TypeName="ManikurSalonModel.Stud">
+              <MappingFragment StoreEntitySet="Stud">
+                <ScalarProperty Name="ID_stud" ColumnName="ID_stud" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ManikurSalonModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yslyga">
+            <EntityTypeMapping TypeName="ManikurSalonModel.Yslyga">
+              <MappingFragment StoreEntitySet="Yslyga">
+                <ScalarProperty Name="ID_Yslyga" ColumnName="ID_Yslyga" />
+                <ScalarProperty Name="ID_Categorya" ColumnName="ID_Categorya" />
+                <ScalarProperty Name="NazvanieYslygi" ColumnName="NazvanieYslygi" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zapis">
+            <EntityTypeMapping TypeName="ManikurSalonModel.Zapis">
+              <MappingFragment StoreEntitySet="Zapis">
+                <ScalarProperty Name="ID_Zapis" ColumnName="ID_Zapis" />
+                <ScalarProperty Name="ID_stud" ColumnName="ID_stud" />
+                <ScalarProperty Name="ID_Yslyga" ColumnName="ID_Yslyga" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="ID_Master" ColumnName="ID_Master" />
+                <ScalarProperty Name="Name_Zakasik" ColumnName="Name_Zakasik" />
+                <ScalarProperty Name="SecondName_Zakasik" ColumnName="SecondName_Zakasik" />
+                <ScalarProperty Name="Otchestvo_Zakasik" ColumnName="Otchestvo_Zakasik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
